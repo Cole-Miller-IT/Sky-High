@@ -14,7 +14,7 @@ func _process(delta):
 func _on_start_game_pressed():
 	$ButtonClick.play()
 	await $ButtonClick.finished
-	print("change to game scene")
+	get_tree().change_scene_to_file("res://Scenes/level.tscn")
 
 
 func _on_options_pressed():
