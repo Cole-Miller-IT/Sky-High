@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvf0wh0ex3hv"]
+
+[ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_et03t"]
+[ext_resource type="Texture2D" uid="uid://dbvgu0406m8c7" path="res://Assets/Images/Sample.png" id="2_chuij"]
+[ext_resource type="AudioStream" uid="uid://dapacmyc57jh7" path="res://Assets/Sounds/buttonClickMenu.mp3" id="3_4u7ci"]
+[ext_resource type="AudioStream" uid="uid://da5tpmgs1cghp" path="res://Assets/Sounds/mainMenuMusic Pixel Dreams.mp3" id="4_1ubv8"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_et03t")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(958.5, 539.25)
+scale = Vector2(2.09477, 2.1)
+texture = ExtResource("2_chuij")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="Start Game" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4u7ci")
+volume_db = -12.0
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1ubv8")
+volume_db = -7.0
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

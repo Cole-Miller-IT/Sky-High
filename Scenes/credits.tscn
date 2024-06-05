@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5rau0a8e0hbk"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_yqcij"]
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_yqcij")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CreditsText" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -37.5
+offset_right = 384.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Created by: Cole Miller
+Menu music: Created using Suno
+Art assets: Kenny (https://kenney.nl/assets)"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+offset_left = 1792.0
+offset_right = 1920.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 33
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
