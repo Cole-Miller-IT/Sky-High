@@ -13,9 +13,9 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed('up'):
+	if(Input.is_anything_pressed()==false):
 		return idle_state
-		
+	
 	return null
 
 func process_frame(delta: float) -> State:
@@ -23,7 +23,6 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var SPEED = 100
 	var directionHorizontal = Input.get_axis("left", "right")
 	if directionHorizontal:
@@ -38,13 +37,6 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y = move_toward(parent.velocity.y, 0, SPEED)
 
 	parent.move_and_slide()
-	
-	#parent.velocity.y += gravity * delta
-	
-	#var movement = Input.get_axis('move_left', 'move_right') * move_speed
-	
-	if parent.velocity.x == 0 and parent.velocity.y == 0:
-		return idle_state
 	
 	return null
 	

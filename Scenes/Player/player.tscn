@@ -30,5 +30,6 @@ starting_state = NodePath("Idle")
 script = ExtResource("4_xyoxs")
 move_state = NodePath("../Move")
 
-[node name="Move" type="Node" parent="Finite State Machine"]
+[node name="Move" type="Node" parent="Finite State Machine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("5_sj4xo")
+idle_state = NodePath("../Idle")
