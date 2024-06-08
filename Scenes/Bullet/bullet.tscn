@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfpu6cdj44lw6"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet/bullet.gd" id="1_jlokc"]
+[ext_resource type="Texture2D" uid="uid://bkxd3xswgq2ga" path="res://Assets/Images/Tiles/tile_0000.png" id="1_jvdb7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_olaxw"]
+radius = 5.0
+height = 20.0
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_jlokc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_olaxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_jvdb7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Death" type="Timer" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Death" to="." method="_on_death_timeout"]

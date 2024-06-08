@@ -15,6 +15,7 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+	#Change later to just the movement keys
 	if (Input.is_anything_pressed() == false):
 		return idle_state
 	

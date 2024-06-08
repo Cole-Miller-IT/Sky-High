@@ -1,13 +1,22 @@
 class_name Player
 extends CharacterBody2D
 
-#@onready
-#var animations = $animations
+
+@onready
+var trackingHandler = $TrackingHandler as TrackingHandler
+
+#State machines
 @onready
 var movementStateMachine = $MovementStateMachine
 
 @onready
 var actionStateMachine = $ActionStateMachine
+
+#Shared data for the state machines
+var canAttack = true
+
+
+
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
@@ -27,3 +36,5 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	movementStateMachine.process_frame(delta)
 	actionStateMachine.process_frame(delta)
+	
+	trackingHandler.trackMouse(self)

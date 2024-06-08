@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2i1ljn1kxwrm"]
+[gd_scene load_steps=12 format=3 uid="uid://d2i1ljn1kxwrm"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_qlg2j"]
 [ext_resource type="Texture2D" uid="uid://ctgj0sp046gk5" path="res://Assets/Images/Ships/ship_0000.png" id="2_176h0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/Attack.gd" id="6_ka12n"]
 [ext_resource type="Script" path="res://Scripts/States/Finite State Machine.gd" id="6_qol03"]
 [ext_resource type="Script" path="res://Scripts/Player/Debug.gd" id="7_lda2w"]
+[ext_resource type="PackedScene" uid="uid://b5mx6nn0g8ij0" path="res://Scenes/tracking_handler.tscn" id="10_chv68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2utv"]
 size = Vector2(32, 18)
@@ -21,6 +22,7 @@ zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("2_176h0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -50,6 +52,9 @@ attack_state = NodePath("../Attack")
 script = ExtResource("6_ka12n")
 idle_action_state = NodePath("../IdleAction")
 
+[node name="AttackRate" type="Timer" parent="ActionStateMachine/Attack"]
+one_shot = true
+
 [node name="Debug" type="Node" parent="."]
 script = ExtResource("7_lda2w")
 
@@ -61,3 +66,7 @@ offset_bottom = -13.0
 theme_override_font_sizes/font_size = 14
 text = "Move State: 
 Action State: "
+
+[node name="TrackingHandler" parent="." instance=ExtResource("10_chv68")]
+
+[connection signal="timeout" from="ActionStateMachine/Attack/AttackRate" to="ActionStateMachine/Attack" method="_on_attack_rate_timeout"]
