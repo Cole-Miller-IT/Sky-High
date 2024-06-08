@@ -38,10 +38,6 @@ position_smoothing_enabled = true
 rotation = 1.5708
 texture = ExtResource("2_176h0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_c2utv")
-
 [node name="TrackingHandler" parent="." instance=ExtResource("10_chv68")]
 
 [node name="HealthBar" parent="." instance=ExtResource("5_ftvr4")]
@@ -49,6 +45,13 @@ offset_left = -40.0
 offset_top = -120.0
 offset_right = 40.0
 offset_bottom = -104.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_c2utv")
 
 [node name="MovementStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_afmci")]
 starting_state = NodePath("Idle")

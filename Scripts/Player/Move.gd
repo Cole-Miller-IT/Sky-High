@@ -9,7 +9,7 @@ var SPEED = 100
 func enter() -> void:
 	#parent.animations.play(animation_name)
 	super()
-	print("In move state")
+	#print("In move state")
 
 func exit() -> void:
 	pass

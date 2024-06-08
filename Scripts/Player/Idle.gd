@@ -6,7 +6,7 @@ extends State
 func enter() -> void:
 	#parent.animations.play(animation_name)
 	super()
-	print("In idle state")
+	#print("In idle state")
 
 func exit() -> void:
 	pass

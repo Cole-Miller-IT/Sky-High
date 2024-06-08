@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cms54s1lri4uh"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/test_collide_character.gd" id="1_335ct"]
+[ext_resource type="Script" path="res://Scenes/Enemies/HurtBox.gd" id="2_uock8"]
+[ext_resource type="PackedScene" uid="uid://ctymmmhqnr2wr" path="res://Scenes/health_bar.tscn" id="3_1yq04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul37r"]
+size = Vector2(20, 248)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leoq2"]
+size = Vector2(20, 248)
+
+[node name="TestCollideCharacter" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_335ct")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_bottom = 224.0
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitorable = false
+script = ExtResource("2_uock8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 108)
+shape = SubResource("RectangleShape2D_ul37r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 108)
+shape = SubResource("RectangleShape2D_leoq2")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_1yq04")]
+offset_left = -296.0
+offset_top = -80.0
+offset_right = 320.0
+offset_bottom = -48.0
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
