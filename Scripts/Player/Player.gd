@@ -4,19 +4,26 @@ extends CharacterBody2D
 #@onready
 #var animations = $animations
 @onready
-var state_machine = $"Finite State Machine"
+var movementStateMachine = $MovementStateMachine
+
+@onready
+var actionStateMachine = $ActionStateMachine
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
-	state_machine.init(self)
+	movementStateMachine.init(self)
+	actionStateMachine.init(self)
 
-#pass the input/processing to the state machine
+#pass the input/processing to the state machines
 func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
+	movementStateMachine.process_input(event)
+	actionStateMachine.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
+	movementStateMachine.process_physics(delta)
+	actionStateMachine.process_physics(delta)
 
 func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
+	movementStateMachine.process_frame(delta)
+	actionStateMachine.process_frame(delta)

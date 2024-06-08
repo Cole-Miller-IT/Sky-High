@@ -4,6 +4,8 @@ extends State
 @export
 var idle_state: State
 
+var SPEED = 100
+
 func enter() -> void:
 	#parent.animations.play(animation_name)
 	super()
@@ -13,7 +15,7 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	if(Input.is_anything_pressed()==false):
+	if (Input.is_anything_pressed() == false):
 		return idle_state
 	
 	return null
@@ -23,7 +25,6 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	# Get the input direction and handle the movement/deceleration.
-	var SPEED = 100
 	var directionHorizontal = Input.get_axis("left", "right")
 	if directionHorizontal:
 		parent.velocity.x = directionHorizontal * SPEED
