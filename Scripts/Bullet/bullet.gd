@@ -19,7 +19,7 @@ func _ready():
 	
 
 func _on_hit(_body: Node) -> void:
-	#print("hit something")
+	print("hit something")
 	queue_free()
 
 

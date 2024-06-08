@@ -6,7 +6,7 @@ func _ready():
 
 
 func _on_area_entered(hitbox: HitBox):
-	print("hitbox")
+	#print("hitbox")
 	if owner.has_method("take_damage"):
-		print("take damage")
+		#print("take damage")
 		owner.take_damage(hitbox.damage)

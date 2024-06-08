@@ -20,8 +20,8 @@ offset_top = -8.0
 offset_bottom = 224.0
 
 [node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 0
+collision_mask = 2
 monitorable = false
 script = ExtResource("2_uock8")
 
@@ -38,5 +38,3 @@ offset_left = -296.0
 offset_top = -80.0
 offset_right = 320.0
 offset_bottom = -48.0
-
-[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
