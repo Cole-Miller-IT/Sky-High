@@ -16,13 +16,19 @@ var actionStateMachine = $ActionStateMachine
 var canAttack = true
 
 
-
+var health = 10
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
 	movementStateMachine.init(self)
 	actionStateMachine.init(self)
+	
+	$HealthBar.init_health(health)
+	#await get_tree().create_timer(2).timeout
+	#$HealthBar._set_health(5)
+	#await get_tree().create_timer(2).timeout
+	#$HealthBar._set_health(1)
 
 #pass the input/processing to the state machines
 func _unhandled_input(event: InputEvent) -> void:

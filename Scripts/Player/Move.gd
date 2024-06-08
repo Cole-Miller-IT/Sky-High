@@ -1,8 +1,8 @@
 extends State
 
 
-@export
-var idle_state: State
+@export var idle_state: State
+@export var bulletTime_move_state: State
 
 var SPEED = 100
 
@@ -15,8 +15,13 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	#Change later to just the movement keys
-	if (Input.is_anything_pressed() == false):
+	if Input.is_action_just_pressed('bulletTime'):
+		return bulletTime_move_state
+		
+	if Input.is_action_pressed("down") or Input.is_action_pressed("up") or Input.is_action_pressed("right") or Input.is_action_pressed("left"):
+		return null
+	
+	else:
 		return idle_state
 	
 	return null

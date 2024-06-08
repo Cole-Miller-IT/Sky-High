@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2i1ljn1kxwrm"]
+[gd_scene load_steps=15 format=3 uid="uid://d2i1ljn1kxwrm"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_qlg2j"]
 [ext_resource type="Texture2D" uid="uid://ctgj0sp046gk5" path="res://Assets/Images/Ships/ship_0000.png" id="2_176h0"]
+[ext_resource type="Script" path="res://Scenes/Player/States.gd" id="2_ga38j"]
 [ext_resource type="PackedScene" uid="uid://cmlkq5wekqpnh" path="res://Scenes/Finite State Machine/finite_state_machine.tscn" id="3_afmci"]
 [ext_resource type="Script" path="res://Scripts/Player/Idle.gd" id="4_xyoxs"]
+[ext_resource type="PackedScene" uid="uid://ctymmmhqnr2wr" path="res://Scenes/health_bar.tscn" id="5_ftvr4"]
 [ext_resource type="Script" path="res://Scripts/Player/Move.gd" id="5_sj4xo"]
+[ext_resource type="Script" path="res://Scripts/Player/BulletTimeMove.gd" id="6_7dgef"]
 [ext_resource type="Script" path="res://Scripts/Player/IdleAction.gd" id="6_8hcxc"]
 [ext_resource type="Script" path="res://Scripts/Player/Attack.gd" id="6_ka12n"]
 [ext_resource type="Script" path="res://Scripts/States/Finite State Machine.gd" id="6_qol03"]
-[ext_resource type="Script" path="res://Scripts/Player/Debug.gd" id="7_lda2w"]
+[ext_resource type="Script" path="res://Scripts/Player/BulletTime.gd" id="9_gbeiv"]
 [ext_resource type="PackedScene" uid="uid://b5mx6nn0g8ij0" path="res://Scenes/tracking_handler.tscn" id="10_chv68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2utv"]
@@ -16,6 +19,16 @@ size = Vector2(32, 18)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qlg2j")
+
+[node name="DebugStates" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -56.0
+offset_right = -14.0
+offset_bottom = -13.0
+theme_override_font_sizes/font_size = 14
+text = "Move State: 
+Action State: "
+script = ExtResource("2_ga38j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
@@ -29,48 +42,51 @@ texture = ExtResource("2_176h0")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_c2utv")
 
+[node name="TrackingHandler" parent="." instance=ExtResource("10_chv68")]
+
+[node name="HealthBar" parent="." instance=ExtResource("5_ftvr4")]
+offset_left = -40.0
+offset_top = -120.0
+offset_right = 40.0
+offset_bottom = -104.0
+
 [node name="MovementStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_afmci")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("move_state")]
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("move_state", "bulletTime_move_state")]
 script = ExtResource("4_xyoxs")
 move_state = NodePath("../Move")
+bulletTime_move_state = NodePath("../BulletTimeMove")
 
-[node name="Move" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Move" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state", "bulletTime_move_state")]
 script = ExtResource("5_sj4xo")
+idle_state = NodePath("../Idle")
+bulletTime_move_state = NodePath("../BulletTimeMove")
+
+[node name="BulletTimeMove" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("6_7dgef")
 idle_state = NodePath("../Idle")
 
 [node name="ActionStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("6_qol03")
 starting_state = NodePath("IdleAction")
 
-[node name="IdleAction" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("attack_state")]
+[node name="IdleAction" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("attack_state", "bulletTime_state")]
 script = ExtResource("6_8hcxc")
 attack_state = NodePath("../Attack")
+bulletTime_state = NodePath("../BulletTime")
 
-[node name="Attack" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("idle_action_state")]
+[node name="Attack" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("idle_action_state", "bulletTime_state")]
 script = ExtResource("6_ka12n")
 idle_action_state = NodePath("../IdleAction")
+bulletTime_state = NodePath("../BulletTime")
 
 [node name="AttackRate" type="Timer" parent="ActionStateMachine/Attack"]
+wait_time = 0.5
 one_shot = true
 
-[node name="AttackPosition" type="Marker2D" parent="ActionStateMachine/Attack"]
-position = Vector2(24, 0)
-
-[node name="Debug" type="Node" parent="."]
-script = ExtResource("7_lda2w")
-
-[node name="States" type="Label" parent="Debug"]
-offset_left = -104.0
-offset_top = -56.0
-offset_right = -14.0
-offset_bottom = -13.0
-theme_override_font_sizes/font_size = 14
-text = "Move State: 
-Action State: "
-
-[node name="TrackingHandler" parent="." instance=ExtResource("10_chv68")]
-visible = false
+[node name="BulletTime" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("9_gbeiv")
+idle_state = NodePath("../IdleAction")
 
 [connection signal="timeout" from="ActionStateMachine/Attack/AttackRate" to="ActionStateMachine/Attack" method="_on_attack_rate_timeout"]

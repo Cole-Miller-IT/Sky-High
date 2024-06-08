@@ -3,6 +3,7 @@ extends State
 @onready var bullet = preload("res://Scenes/Bullet/bullet.tscn")
 
 @export var idle_action_state: State
+@export var bulletTime_state: State
 
 func enter() -> void:
 	#parent.animations.play(animation_name)
@@ -16,6 +17,9 @@ func exit() -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed('bulletTime'):
+		return bulletTime_state	
+		
 	if Input.is_action_pressed("lightAttack") or Input.is_action_just_pressed("lightAttack"):
 		attack()
 			
@@ -25,6 +29,8 @@ func process_input(event: InputEvent) -> State:
 		return idle_action_state
 
 func process_frame(delta: float) -> State:
+	attack()
+	
 	return null
 
 func process_physics(delta: float) -> State:
@@ -47,6 +53,7 @@ func attack():
 		#gets added to the player node. could change later to the level node
 		add_child(bulletInstance)
 			
+		#add some delay between attacks
 		parent.canAttack = false
 		$AttackRate.start()
 		

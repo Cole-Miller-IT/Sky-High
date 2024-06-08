@@ -1,22 +1,27 @@
 extends State
 
-@export var move_state: State
-@export var bulletTime_move_state: State
+@export var idle_state: State
+
 
 func enter() -> void:
 	#parent.animations.play(animation_name)
 	super()
-	print("In idle state")
+	print("In bulletTime Move state")
 
+	#slow down the game
+	Engine.time_scale = 0.1 
+	
+	
 func exit() -> void:
-	pass
+	#Slowly go back to normal time
+	var tween = create_tween() as Tween
+	tween.tween_property(Engine, "time_scale", 1.0, 0.5)
+	#Engine.time_scale = 1.0
 
 func process_input(event: InputEvent) -> State:
+	#Change to a hotkey later
 	if Input.is_action_just_pressed('bulletTime'):
-		return bulletTime_move_state
-		
-	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('right') or Input.is_action_just_pressed('up') or Input.is_action_just_pressed('down'):
-		return move_state
+		return idle_state
 		
 	return null
 

@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 
 var direction: Vector2 = Vector2.RIGHT
-var speed : float = 100.0
+var speed : float = 150.0
 
 
 func rotateSprite():
