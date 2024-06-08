@@ -5,12 +5,13 @@ extends CharacterBody2D
 @onready var notifier = $VisibleOnScreenNotifier2D as VisibleOnScreenEnabler2D
 @onready var deathTimer = $Death as Timer
 
-#var direction: Vector2 = Vector2.RIGHT
-var direction: Vector2 = Vector2.RIGHT
-var speed : float = 1.0
 
-func rotateSprite(target: Vector2):
-	self.look_at(target)
+var direction: Vector2 = Vector2.RIGHT
+var speed : float = 100.0
+
+
+func rotateSprite():
+	self.look_at(direction)
 
 
 func _physics_process(delta):
@@ -18,6 +19,7 @@ func _physics_process(delta):
 
 
 func move(delta : float) -> void:
+	#self.velocity = (direction * speed)
 	move_and_collide((direction * speed) * delta)
 
 

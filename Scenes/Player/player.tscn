@@ -55,6 +55,9 @@ idle_action_state = NodePath("../IdleAction")
 [node name="AttackRate" type="Timer" parent="ActionStateMachine/Attack"]
 one_shot = true
 
+[node name="AttackPosition" type="Marker2D" parent="ActionStateMachine/Attack"]
+position = Vector2(24, 0)
+
 [node name="Debug" type="Node" parent="."]
 script = ExtResource("7_lda2w")
 
@@ -68,5 +71,6 @@ text = "Move State:
 Action State: "
 
 [node name="TrackingHandler" parent="." instance=ExtResource("10_chv68")]
+visible = false
 
 [connection signal="timeout" from="ActionStateMachine/Attack/AttackRate" to="ActionStateMachine/Attack" method="_on_attack_rate_timeout"]

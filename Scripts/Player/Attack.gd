@@ -34,15 +34,18 @@ func attack():
 	if parent.canAttack == true:
 		print("shot fired")
 		
-		var instance = bullet.instantiate() as Bullet
+		#Create a bullet to fire
+		var bulletInstance = bullet.instantiate() as Bullet
 		
-		#var targetPos = parent.get_global_mouse_position()
-		#instance.direction = Vector2.from_angle(parent.rotation)
-		#var bullet_direction = Vector2.from_angle(parent.rotation)
-		#instance.rotateSprite(targetPos)
-		#instance.position = Vector2(parent.position.x + 48, parent.position.y)
+		#Update the variables so it shoots out of the player
+		#Normalize to prevent the bullet from moving faster or slower based on where the mouse is
+		var targetPos = (parent.get_global_mouse_position() - parent.global_position).normalized() 
+		bulletInstance.direction = targetPos 
+		bulletInstance.rotateSprite()
+		bulletInstance.position = Vector2(parent.position.x, parent.position.y)
 		
-		add_child(instance)
+		#gets added to the player node. could change later to the level node
+		add_child(bulletInstance)
 			
 		parent.canAttack = false
 		$AttackRate.start()
