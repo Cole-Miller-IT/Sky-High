@@ -66,9 +66,9 @@ script = ExtResource("5_sj4xo")
 idle_state = NodePath("../Idle")
 bulletTime_move_state = NodePath("../BulletTimeMove")
 
-[node name="BulletTimeMove" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="BulletTimeMove" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("move_state")]
 script = ExtResource("6_7dgef")
-idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
 
 [node name="ActionStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("6_qol03")
@@ -88,8 +88,8 @@ bulletTime_state = NodePath("../BulletTime")
 wait_time = 0.5
 one_shot = true
 
-[node name="BulletTime" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="BulletTime" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("attack_state")]
 script = ExtResource("9_gbeiv")
-idle_state = NodePath("../IdleAction")
+attack_state = NodePath("../Attack")
 
 [connection signal="timeout" from="ActionStateMachine/Attack/AttackRate" to="ActionStateMachine/Attack" method="_on_attack_rate_timeout"]

@@ -2,20 +2,17 @@ class_name Player
 extends CharacterBody2D
 
 
-@onready
-var trackingHandler = $TrackingHandler as TrackingHandler
+@onready var trackingHandler = $TrackingHandler as TrackingHandler
 
 #State machines
-@onready
-var movementStateMachine = $MovementStateMachine
-
-@onready
-var actionStateMachine = $ActionStateMachine
+@onready var movementStateMachine = $MovementStateMachine
+@onready var actionStateMachine = $ActionStateMachine
 
 #Shared data for the state machines
 var canAttack = true
 
 
+#player info
 var health = 10
 
 func _ready() -> void:

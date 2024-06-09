@@ -1,8 +1,6 @@
 extends Node
 
-@export 
-var starting_state: State
-
+@export  var starting_state: State
 var current_state: State
 
 # Initialize the state machine by giving each child state a reference to the
@@ -18,6 +16,7 @@ func init(parent: CharacterBody2D) -> void:
 func change_state(new_state: State) -> void:
 	if current_state:
 		current_state.exit()
+		
 
 	current_state = new_state
 	current_state.enter()
