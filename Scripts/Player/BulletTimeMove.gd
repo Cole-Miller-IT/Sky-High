@@ -43,7 +43,11 @@ func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("confirmBulletTime"):
 		print("execute bullet time orders")
 		#execute the orders the player has queued up
-		executeOrders()
+		var result = executeOrders()
+		
+		#if false keep player in bulletTime, clear list or show what caused them to give the error. i.e. out of bounds with move 3
+		print("result of bullet Time")
+		print(result)
 			
 		return move_state
 	
@@ -83,27 +87,39 @@ func process_physics(delta: float) -> State:
 	return null
 	
 		
-func executeOrders():
+func executeOrders() -> bool:
 	var newPos = Vector2(0,0)
+	var direction = null
+	var targetPos = BTSprite.global_position
+	#print(moveOrders)
 	for order in moveOrders:
-		print(order)
-		#Check out of bounds around here
-		
-		
 		if order == "left":
-			newPos += Vector2(-dashAmount, 0) #change these
+			direction = (targetPos - parent.global_position).normalized()
+			newPos = direction * dashAmount
 			
 		if order == "right":
-			newPos += Vector2(dashAmount, 0)
+			direction = (targetPos - parent.global_position).normalized()
+			newPos = direction * dashAmount
 			
 		if order == "up":
-			newPos += Vector2(0, -dashAmount)
+			direction = (targetPos - parent.global_position).normalized()
+			newPos = direction * dashAmount
 			
 		if order == "down":
-			newPos += Vector2(0, dashAmount)
+			direction = (targetPos - parent.global_position).normalized()
+			newPos = direction * dashAmount
 			
-	print(newPos)
-	parent.position += newPos
+		#Check out of bounds around here
+		#newPos = parent.position + newPos
+		#if newPos out of bounds:
+			#return false
+			
+		#print(parent.position)
+		parent.position += newPos
+		#print("after")
+		#print(parent.position)
+		
+	return true
 			
 func combineOrders():
 	pass	
