@@ -21,10 +21,10 @@ size = Vector2(32, 18)
 script = ExtResource("1_qlg2j")
 
 [node name="DebugStates" type="Label" parent="."]
-offset_left = -104.0
-offset_top = -56.0
-offset_right = -14.0
-offset_bottom = -13.0
+offset_left = -8.0
+offset_top = 24.0
+offset_right = 82.0
+offset_bottom = 67.0
 theme_override_font_sizes/font_size = 14
 text = "Move State: 
 Action State: "
@@ -38,13 +38,36 @@ position_smoothing_enabled = true
 rotation = 1.5708
 texture = ExtResource("2_176h0")
 
+[node name="BulletTimeSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.494118)
+rotation = 1.5708
+texture = ExtResource("2_176h0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="BTFade" type="ColorRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(0, 0, 0, 0.494118)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1344.0
+offset_top = -756.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TrackingHandler" parent="." instance=ExtResource("10_chv68")]
 
 [node name="HealthBar" parent="." instance=ExtResource("5_ftvr4")]
-offset_left = -40.0
-offset_top = -120.0
-offset_right = 40.0
-offset_bottom = -104.0
+offset_left = -96.0
+offset_top = 24.0
+offset_right = -16.0
+offset_bottom = 40.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 monitoring = false

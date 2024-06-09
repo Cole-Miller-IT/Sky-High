@@ -18,6 +18,9 @@ func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('bulletTime'):
 		return attack_state
 		
+	if Input.is_action_just_pressed("confirmBulletTime"):
+		return attack_state
+		
 	return null
 
 func process_frame(delta: float) -> State:
