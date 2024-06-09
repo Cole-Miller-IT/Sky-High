@@ -5,7 +5,8 @@ extends State
 var BTSprite = null
 var BTFade = null
 var moveOrders = []
-var dashAmount = 50
+var baseDashAmount = 50
+var dashModifier = 1 #i.e. if 2 lefts are made combine them into a big, single dash
 
 func enter() -> void:
 	#parent.animations.play(animation_name)
@@ -57,22 +58,23 @@ func process_input(event: InputEvent) -> State:
 		
 		if Input.is_action_just_pressed("left"):
 			BTSprite.position.y += -50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append("left") #store the order for later
+			moveOrders.append(["left", 1]) #store the order for later
 			
 		if Input.is_action_just_pressed("right"):
 			BTSprite.position.y += 50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append("right") #store the order for later
+			moveOrders.append(["right", 1]) #store the order for later
 		
 		if Input.is_action_just_pressed("up"):
 			BTSprite.position.x += 50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append("up") #store the order for later
+			moveOrders.append(["up", 1]) #store the order for later
 		
 		if Input.is_action_just_pressed("down"):
 			BTSprite.position.x += -50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append("down") #store the order for later
+			moveOrders.append(["down", 1]) #store the order for later
 		
 		#combine like orders together first i.e. two lefts make a bigger dash/blink distance
-		combineOrders()
+		if len(moveOrders) > 1:
+			combineOrders()
 		
 	return null
 
@@ -91,21 +93,24 @@ func executeOrders() -> bool:
 	var newPos = Vector2(0,0)
 	var direction = null
 	var targetPos = BTSprite.global_position
-	#print(moveOrders)
+	var dashAmount = 1
+	
 	for order in moveOrders:
-		if order == "left":
+		dashModifier = order[1]
+		dashAmount = baseDashAmount * dashModifier
+		if order[0] == "left":
 			direction = (targetPos - parent.global_position).normalized()
 			newPos = direction * dashAmount
 			
-		if order == "right":
+		if order[0]  == "right":
 			direction = (targetPos - parent.global_position).normalized()
 			newPos = direction * dashAmount
 			
-		if order == "up":
+		if order[0]  == "up":
 			direction = (targetPos - parent.global_position).normalized()
 			newPos = direction * dashAmount
 			
-		if order == "down":
+		if order[0]  == "down":
 			direction = (targetPos - parent.global_position).normalized()
 			newPos = direction * dashAmount
 			
@@ -122,5 +127,31 @@ func executeOrders() -> bool:
 	return true
 			
 func combineOrders():
-	pass	
+	print("before combining")	
+	print(moveOrders)
+	var prevOrder = null
+	var index = 0
+	for currentOrder in moveOrders:
+		if prevOrder == null:
+			prevOrder = currentOrder
+			index += 1
+			
+		else:
+			#at the second order or greater
+			if currentOrder[0] == prevOrder[0]:
+				#combine the dash modifiers into one order
+				moveOrders[index - 1][1] = currentOrder[1] + prevOrder[1]
+				
+				#remove the other orders from the array
+				moveOrders.remove_at(index)
+				
+				#don't increment the index b/c we removed a value
+				
+			else:
+				prevOrder = currentOrder
+				index += 1
+				
+		
+	print("after combining")	
+	print(moveOrders)
 
