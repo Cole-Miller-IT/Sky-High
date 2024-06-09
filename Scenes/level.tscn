@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3m0wrdnu01vn"]
+[gd_scene load_steps=8 format=3 uid="uid://b3m0wrdnu01vn"]
 
 [ext_resource type="Texture2D" uid="uid://vy24xyu8rbli" path="res://Assets/Images/Tilemap/tiles_packed.png" id="1_avl4d"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_dnsy5"]
 [ext_resource type="PackedScene" uid="uid://d2i1ljn1kxwrm" path="res://Scenes/Player/player.tscn" id="2_ayi73"]
 [ext_resource type="PackedScene" uid="uid://cms54s1lri4uh" path="res://Scenes/test_collide_character.tscn" id="3_61qxc"]
 
@@ -134,6 +135,7 @@ sources/0 = SubResource("TileSetAtlasSource_r1qah")
 
 [node name="Level" type="WorldEnvironment"]
 environment = SubResource("Environment_6g5wf")
+script = ExtResource("1_dnsy5")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4ecav")

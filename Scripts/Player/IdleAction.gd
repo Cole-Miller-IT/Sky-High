@@ -2,6 +2,7 @@ extends State
 
 @export var attack_state: State
 @export var bulletTime_state: State
+@export var die_state: State
 
 func enter() -> void:
 	#parent.animations.play(animation_name)
@@ -17,6 +18,9 @@ func process_input(event: InputEvent) -> State:
 		
 	if Input.is_action_just_pressed('bulletTime'):
 		return bulletTime_state	
+		
+	if Input.is_action_just_pressed('die'):
+		return die_state	
 	
 	return null
 

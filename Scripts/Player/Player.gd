@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+signal playerDied
 
 @onready var trackingHandler = $TrackingHandler as TrackingHandler
 
@@ -37,3 +38,8 @@ func _process(delta: float) -> void:
 	actionStateMachine.process_frame(delta)
 	
 	trackingHandler.trackMouse(self)
+
+
+#pass up the signal from the die state
+func _on_die_player_died():
+	playerDied.emit()

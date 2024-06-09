@@ -1,6 +1,7 @@
 extends State
 
 @export var attack_state: State
+@export var die_state: State
 
 
 func enter() -> void:
@@ -17,6 +18,9 @@ func process_input(event: InputEvent) -> State:
 	#Change to a hotkey later
 	if Input.is_action_just_pressed('bulletTime'):
 		return attack_state
+		
+	if Input.is_action_just_pressed('die'):
+		return die_state
 		
 	if Input.is_action_just_pressed("confirmBulletTime"):
 		return attack_state

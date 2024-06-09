@@ -1,6 +1,7 @@
 extends State
 
 @export var move_state: State
+@export var die_state: State
 
 var BTSprite = null
 var BTFade = null
@@ -38,6 +39,9 @@ func exit() -> void:
 	#Engine.time_scale = 1.0
 
 func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed('die'):
+		return die_state
+		
 	if Input.is_action_just_pressed('bulletTime'):
 		return move_state
 		
