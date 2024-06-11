@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3m0wrdnu01vn"]
+[gd_scene load_steps=9 format=3 uid="uid://b3m0wrdnu01vn"]
 
 [ext_resource type="Texture2D" uid="uid://vy24xyu8rbli" path="res://Assets/Images/Tilemap/tiles_packed.png" id="1_avl4d"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_dnsy5"]
 [ext_resource type="PackedScene" uid="uid://d2i1ljn1kxwrm" path="res://Scenes/Player/player.tscn" id="2_ayi73"]
 [ext_resource type="PackedScene" uid="uid://cms54s1lri4uh" path="res://Scenes/test_collide_character.tscn" id="3_61qxc"]
+[ext_resource type="PackedScene" uid="uid://ev25lbu6j3es" path="res://Scenes/ui.tscn" id="5_pifmc"]
 
 [sub_resource type="Environment" id="Environment_6g5wf"]
 
@@ -146,3 +147,13 @@ layer_0/tile_data = PackedInt32Array(2031660, 131072, 3, 2031661, 131072, 3, 209
 
 [node name="TestCollideCharacter" parent="." instance=ExtResource("3_61qxc")]
 position = Vector2(560, -72)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("5_pifmc")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.6, 0.6)

@@ -15,6 +15,7 @@ var canAttack = true
 
 #player info
 var health = 10
+#var bulletTimeCharges = 10
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,

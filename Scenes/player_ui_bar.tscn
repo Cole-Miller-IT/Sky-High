@@ -1,0 +1,234 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciuayf5okyali"]
+
+[ext_resource type="PackedScene" uid="uid://ctymmmhqnr2wr" path="res://Scenes/health_bar.tscn" id="1_3p4mx"]
+[ext_resource type="PackedScene" uid="uid://cjukbma0njshh" path="res://Scenes/bulletTime_bar.tscn" id="2_mmi5f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fsja"]
+bg_color = Color(0, 0.282353, 0.0823529, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv4x8"]
+bg_color = Color(0, 0, 0.454902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.8, 0.8, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 30
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1mel"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 5
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b5vh"]
+bg_color = Color(0.215686, 0.227451, 0.25098, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rr1a"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8duf"]
+bg_color = Color(0.239216, 0.211765, 0.290196, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syf6r"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suk1k"]
+bg_color = Color(0, 0, 0.490196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0823529, 0.8, 0.8, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16tah"]
+bg_color = Color(0, 0.109804, 0.517647, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.8, 0.8, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="Player UI Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="UI Elements" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="XPBar" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 192.0
+offset_right = 376.0
+offset_bottom = 336.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4fsja")
+
+[node name="Panel7" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 56.0
+offset_right = 672.0
+offset_bottom = 88.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fv4x8")
+
+[node name="Panel6" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 80.0
+offset_right = 744.0
+offset_bottom = 232.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b1mel")
+
+[node name="Panel" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_right = 352.0
+offset_bottom = 296.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5b5vh")
+
+[node name="Panel2" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 64.0
+offset_right = 264.0
+offset_bottom = 232.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rr1a")
+
+[node name="Panel8" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 200.0
+offset_right = 360.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s8duf")
+
+[node name="Panel9" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 216.0
+offset_right = 344.0
+offset_bottom = 304.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_syf6r")
+
+[node name="Panel5" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 72.0
+offset_right = 24.0
+offset_bottom = 224.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_suk1k")
+
+[node name="Panel11" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = -16.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_16tah")
+
+[node name="Panel12" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = -16.0
+offset_right = 272.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_16tah")
+
+[node name="Panel3" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 56.0
+rotation = 0.349066
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rr1a")
+
+[node name="Panel4" type="Panel" parent="UI Elements"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 144.0
+offset_bottom = 56.0
+rotation = 0.349066
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rr1a")
+
+[node name="LevelCounter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 216.0
+offset_right = 328.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 64.0
+offset_right = 421.0
+offset_bottom = 133.0
+theme_override_font_sizes/font_size = 25
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BT" type="Label" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 128.0
+offset_right = 421.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 25
+text = "BT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" parent="." instance=ExtResource("1_3p4mx")]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 120.0
+offset_right = 728.0
+offset_bottom = 144.0
+
+[node name="BulletTimeBar" parent="." instance=ExtResource("2_mmi5f")]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 184.0
+offset_right = 672.0
+offset_bottom = 208.0
