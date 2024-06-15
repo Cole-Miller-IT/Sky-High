@@ -6,9 +6,14 @@ var is_casting := false :
 	set (value):
 		is_casting = value
 		
+		$BeamStartParticles.emitting = true
+		$BeamSparkles.emitting = true
+		
 		if is_casting:
 			appear()
 		else:
+			$BeamStartParticles.emitting = false
+			$BeamCollisionParticles.emitting = false
 			disappear()
 		
 		set_physics_process(is_casting)
@@ -30,10 +35,17 @@ func _physics_process(delta):
 	var cast_point := target_position
 	force_raycast_update()
 	
+	$BeamCollisionParticles.emitting = is_colliding()
+	
 	if is_colliding():
 		cast_point = to_local(get_collision_point())
+		$BeamCollisionParticles.global_rotation = get_collision_normal().angle()
+		$BeamCollisionParticles.position = cast_point
 		
 	$Line2D.points[1] = cast_point
+	
+	$BeamSparkles.position = cast_point * 0.5
+	$BeamSparkles.process_material.emission_box_extents.x = cast_point.length() * 0.5
 	
 func appear():
 	print("appear")
