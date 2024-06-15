@@ -15,6 +15,8 @@ func enter() -> void:
 	print("In bulletTime Move state")
 
 	BTSprite = parent.get_node("BulletTimeSprite")
+	#show a visual indicator of where the player will end up
+	BTSprite.visible = true
 	
 	BTFade = parent.get_node("CanvasLayer/BTFade")
 	BTFade.visible = true
@@ -57,28 +59,33 @@ func process_input(event: InputEvent) -> State:
 		return move_state
 	
 	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
-		#show a visual indicator of where the player will end up
-		BTSprite.visible = true
-		
-		if Input.is_action_just_pressed("left"):
-			BTSprite.position.y += -50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append(["left", 1]) #store the order for later
+		if parent.bulletTimeCharges <= 0:
+			print("out of bullet time charges")
 			
-		if Input.is_action_just_pressed("right"):
-			BTSprite.position.y += 50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append(["right", 1]) #store the order for later
-		
-		if Input.is_action_just_pressed("up"):
-			BTSprite.position.x += 50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append(["up", 1]) #store the order for later
-		
-		if Input.is_action_just_pressed("down"):
-			BTSprite.position.x += -50 #offset sprite. y cause the player sprites is rotated 90 degrees
-			moveOrders.append(["down", 1]) #store the order for later
-		
-		#combine like orders together first i.e. two lefts make a bigger dash/blink distance
-		if len(moveOrders) > 1:
-			combineOrders()
+		else:
+			if Input.is_action_just_pressed("left"):
+				BTSprite.position.y += -50 #offset sprite. y cause the player sprites is rotated 90 degrees
+				moveOrders.append(["left", 1]) #store the order for later
+				
+			if Input.is_action_just_pressed("right"):
+				BTSprite.position.y += 50 #offset sprite. y cause the player sprites is rotated 90 degrees
+				moveOrders.append(["right", 1]) #store the order for later
+			
+			if Input.is_action_just_pressed("up"):
+				BTSprite.position.x += 50 #offset sprite. y cause the player sprites is rotated 90 degrees
+				moveOrders.append(["up", 1]) #store the order for later
+			
+			if Input.is_action_just_pressed("down"):
+				BTSprite.position.x += -50 #offset sprite. y cause the player sprites is rotated 90 degrees
+				moveOrders.append(["down", 1]) #store the order for later
+			
+			#combine like orders together first i.e. two lefts make a bigger dash/blink distance
+			if len(moveOrders) > 1:
+				combineOrders()
+			
+			#update the UI and player charge counter
+			parent.bulletTimeCharges += -1
+			parent.updatePlayerBTBar.emit(parent.bulletTimeCharges)
 		
 	return null
 

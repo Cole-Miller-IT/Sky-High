@@ -3,6 +3,12 @@ extends CharacterBody2D
 
 signal playerDied
 
+#updating the UI bar
+signal initPlayerHealth
+signal updatePlayerHealth
+signal initPlayerBTBar
+signal updatePlayerBTBar
+
 @onready var trackingHandler = $TrackingHandler as TrackingHandler
 
 #State machines
@@ -15,7 +21,7 @@ var canAttack = true
 
 #player info
 var health = 10
-#var bulletTimeCharges = 10
+var bulletTimeCharges = 10
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
@@ -23,7 +29,8 @@ func _ready() -> void:
 	movementStateMachine.init(self)
 	actionStateMachine.init(self)
 	
-	$HealthBar.init_health(health)
+	initPlayerHealth.emit(health)
+	initPlayerBTBar.emit(bulletTimeCharges)
 
 #pass the input/processing to the state machines
 func _unhandled_input(event: InputEvent) -> void:

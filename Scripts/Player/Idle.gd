@@ -20,6 +20,10 @@ func process_input(event: InputEvent) -> State:
 		return die_state
 		
 	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('right') or Input.is_action_just_pressed('up') or Input.is_action_just_pressed('down'):
+		#testing health bar
+		#parent.health += -1
+		#parent.updatePlayerHealth.emit(parent.health)
+		
 		return move_state
 		
 	return null

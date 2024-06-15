@@ -12,8 +12,6 @@ var is_casting := false :
 		if is_casting:
 			appear()
 		else:
-			$BeamStartParticles.emitting = false
-			$BeamCollisionParticles.emitting = false
 			disappear()
 		
 		set_physics_process(is_casting)
@@ -48,14 +46,18 @@ func _physics_process(delta):
 	$BeamSparkles.process_material.emission_box_extents.x = cast_point.length() * 0.5
 	
 func appear():
-	print("appear")
+	#print("appear")
 	var tween = create_tween()
-	tween.tween_property($Line2D, "width", 30, 1.0)
+	tween.tween_property($Line2D, "width", 10, 1.0)
 
 
 	
 func disappear():
-	print("disappear")
+	#print("disappear")
+	$BeamStartParticles.emitting = false
+	$BeamCollisionParticles.emitting = false
+	$BeamSparkles.emitting = false
+			
 	var tween = create_tween()
 	tween.tween_property($Line2D, "width", 0, 1.0)
 	
