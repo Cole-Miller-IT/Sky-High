@@ -24,6 +24,7 @@ func process_input(event: InputEvent) -> State:
 		#parent.health += -1
 		#parent.updatePlayerHealth.emit(parent.health)
 		
+		
 		return move_state
 		
 	return null

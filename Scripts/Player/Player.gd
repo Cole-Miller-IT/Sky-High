@@ -29,6 +29,7 @@ func _ready() -> void:
 	movementStateMachine.init(self)
 	actionStateMachine.init(self)
 	
+	#Init the UI bars
 	initPlayerHealth.emit(health)
 	initPlayerBTBar.emit(bulletTimeCharges)
 
@@ -51,3 +52,18 @@ func _process(delta: float) -> void:
 #pass up the signal from the die state
 func _on_die_player_died():
 	playerDied.emit()
+
+
+func _on_update_player_health(value):
+	#Apply the flash shader to the player for a brief time
+	hurtFlash()
+	
+	
+func hurtFlash():
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0.7)
+	$Sprite2D.material.set_shader_parameter("flash_color", Vector4(1, 0, 0, 1))
+	$HurtFlashTimer.start()
+
+
+func _on_hurt_flash_timer_timeout():
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0.0)

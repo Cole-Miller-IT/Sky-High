@@ -1,7 +1,7 @@
 extends RayCast2D
 
 
-#:= sets the variable type to whatever is on the right side
+#:= sets the variable type to whatever is on the right side, so a boolean in this case
 var is_casting := false :
 	set (value):
 		is_casting = value
@@ -23,6 +23,7 @@ var is_casting := false :
 func _ready():
 	set_physics_process(false)
 	$Line2D.points[1] = Vector2.ZERO
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -48,8 +49,7 @@ func _physics_process(delta):
 func appear():
 	#print("appear")
 	var tween = create_tween()
-	tween.tween_property($Line2D, "width", 10, 1.0)
-
+	tween.tween_property($Line2D, "width", 10, 0.3)
 
 	
 func disappear():
@@ -59,5 +59,4 @@ func disappear():
 	$BeamSparkles.emitting = false
 			
 	var tween = create_tween()
-	tween.tween_property($Line2D, "width", 0, 1.0)
-	
+	tween.tween_property($Line2D, "width", 0, 0.2)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbqqilc6m0bta"]
+
+[ext_resource type="Shader" path="res://Shaders/hurt.gdshader" id="1_jyl1n"]
+[ext_resource type="Texture2D" uid="uid://0sk7hcsnqcwi" path="res://Assets/Images/Ships/ship_0001.png" id="2_is5nn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kv41o"]
+resource_local_to_scene = true
+shader = ExtResource("1_jyl1n")
+shader_parameter/flash_color = Color(1, 0.231373, 0.231373, 1)
+shader_parameter/flash_modifier = 0.67
+
+[node name="Sprite2D" type="Sprite2D"]
+material = SubResource("ShaderMaterial_kv41o")
+texture = ExtResource("2_is5nn")
