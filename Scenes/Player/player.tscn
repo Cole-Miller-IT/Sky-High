@@ -24,7 +24,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.7
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2utv"]
-size = Vector2(32, 18)
+size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qlg2j")
@@ -77,7 +77,6 @@ grow_vertical = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_c2utv")
 
 [node name="MovementStateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_afmci")]
@@ -141,6 +140,7 @@ volume_db = -25.0
 bus = &"VFX"
 
 [node name="HurtFlashTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [connection signal="updatePlayerHealth" from="." to="." method="_on_update_player_health"]

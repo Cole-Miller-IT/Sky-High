@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciuayf5okyali"]
+[gd_scene load_steps=13 format=3 uid="uid://ciuayf5okyali"]
 
+[ext_resource type="Texture2D" uid="uid://dj455kmgpuuy3" path="res://Assets/Images/Nick.png" id="1_0uegn"]
 [ext_resource type="PackedScene" uid="uid://ctymmmhqnr2wr" path="res://Scenes/health_bar.tscn" id="1_3p4mx"]
 [ext_resource type="PackedScene" uid="uid://cjukbma0njshh" path="res://Scenes/bulletTime_bar.tscn" id="2_mmi5f"]
 
@@ -127,6 +128,15 @@ offset_top = 64.0
 offset_right = 264.0
 offset_bottom = 232.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1rr1a")
+
+[node name="TextureRect" type="TextureRect" parent="UI Elements"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 64.0
+offset_right = 264.0
+offset_bottom = 232.0
+texture = ExtResource("1_0uegn")
+expand_mode = 2
 
 [node name="Panel8" type="Panel" parent="UI Elements"]
 layout_mode = 0

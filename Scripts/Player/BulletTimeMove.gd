@@ -48,7 +48,7 @@ func process_input(event: InputEvent) -> State:
 		return move_state
 		
 	if Input.is_action_just_pressed("confirmBulletTime"):
-		print("execute bullet time orders")
+		#print("execute bullet time orders")
 		#execute the orders the player has queued up
 		var result = executeOrders()
 		
