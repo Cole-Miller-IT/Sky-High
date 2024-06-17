@@ -1,15 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ciuayf5okyali"]
+[gd_scene load_steps=14 format=3 uid="uid://ciuayf5okyali"]
 
 [ext_resource type="Texture2D" uid="uid://dj455kmgpuuy3" path="res://Assets/Images/Nick.png" id="1_0uegn"]
 [ext_resource type="PackedScene" uid="uid://ctymmmhqnr2wr" path="res://Scenes/health_bar.tscn" id="1_3p4mx"]
 [ext_resource type="PackedScene" uid="uid://cjukbma0njshh" path="res://Scenes/bulletTime_bar.tscn" id="2_mmi5f"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fsja"]
-bg_color = Color(0, 0.282353, 0.0823529, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
+[ext_resource type="Texture2D" uid="uid://leo1egci8ueu" path="res://Assets/Images/circle progress bar under.png" id="4_hdwry"]
+[ext_resource type="Texture2D" uid="uid://d1fve6q2np14i" path="res://Assets/Images/circle progress bar.png" id="5_j40jq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv4x8"]
 bg_color = Color(0, 0, 0.454902, 1)
@@ -91,14 +86,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="XPBar" type="Panel" parent="UI Elements"]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 192.0
-offset_right = 376.0
-offset_bottom = 336.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4fsja")
-
 [node name="Panel7" type="Panel" parent="UI Elements"]
 layout_mode = 0
 offset_left = 344.0
@@ -140,18 +127,18 @@ expand_mode = 2
 
 [node name="Panel8" type="Panel" parent="UI Elements"]
 layout_mode = 0
-offset_left = 240.0
+offset_left = 232.0
 offset_top = 200.0
-offset_right = 360.0
-offset_bottom = 320.0
+offset_right = 384.0
+offset_bottom = 352.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_s8duf")
 
 [node name="Panel9" type="Panel" parent="UI Elements"]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 216.0
-offset_right = 344.0
-offset_bottom = 304.0
+offset_left = 264.0
+offset_top = 232.0
+offset_right = 352.0
+offset_bottom = 320.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_syf6r")
 
 [node name="Panel5" type="Panel" parent="UI Elements"]
@@ -198,10 +185,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1rr1a")
 
 [node name="LevelCounter" type="Label" parent="."]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 216.0
-offset_right = 328.0
-offset_bottom = 296.0
+offset_left = 280.0
+offset_top = 232.0
+offset_right = 336.0
+offset_bottom = 312.0
 theme_override_font_sizes/font_size = 50
 text = "3"
 horizontal_alignment = 1
@@ -242,3 +229,19 @@ offset_left = 376.0
 offset_top = 184.0
 offset_right = 672.0
 offset_bottom = 208.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 168.0
+offset_top = 136.0
+offset_right = 1281.0
+offset_bottom = 1249.0
+scale = Vector2(0.25, 0.25)
+value = 50.0
+fill_mode = 4
+texture_under = ExtResource("4_hdwry")
+texture_progress = ExtResource("5_j40jq")
+tint_progress = Color(0, 1, 0.866667, 1)
+radial_initial_angle = 50.0
+radial_fill_degrees = 215.0
