@@ -23,6 +23,12 @@ var canAttack = true
 var health = 10
 var bulletTimeCharges = 10
 
+var xpLevel = 1
+var xpCur = 0
+var xpLevelThreshold = 100 	#How much xp the player needs to level up
+var xpLevelModifier = 1.1 	#How much more xp the players needs per level
+var xpAmount = 55
+
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
@@ -67,3 +73,22 @@ func hurtFlash():
 
 func _on_hurt_flash_timer_timeout():
 	$Sprite2D.material.set_shader_parameter("flash_modifier", 0.0)
+
+
+func gain_xp():
+	print("gained " + xpAmount + " xp")
+	xpCur += xpAmount
+	
+	if xpCur >= xpLevelThreshold:
+		#level up
+		print("level up")
+		xpLevel += 1
+		xpCur -= xpLevelThreshold
+		
+		#increase the new level threshold
+		xpLevelThreshold = xpLevelThreshold * xpLevelModifier
+		print("new xp to level " + xpLevelThreshold)
+
+
+#func _on_xp_hurt_box_area_entered(area):
+	#print("dsad")

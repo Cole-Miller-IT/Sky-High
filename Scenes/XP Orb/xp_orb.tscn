@@ -30,8 +30,6 @@ shape = SubResource("CircleShape2D_011ar")
 [node name="Timer" type="Timer" parent="VisibleOnScreenNotifier2D"]
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_0wvin")

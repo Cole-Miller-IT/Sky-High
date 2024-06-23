@@ -3,8 +3,9 @@ extends Node2D
 @onready var target = null
 @onready var direction = null
 
-var speed = 10
+var speed = 50
 var speedModifier = 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +19,9 @@ func _process(delta):
 	
 	#move towards the player
 	direction = (target.global_position - self.global_position).normalized()
-	print(direction)
+	#print(direction)
 	self.position += ((direction * speed) * speedModifier) * delta
-	print(position)
+	#print(position)
 
 
 
