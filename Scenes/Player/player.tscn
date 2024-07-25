@@ -160,3 +160,4 @@ shape = SubResource("RectangleShape2D_w2yrl")
 [connection signal="playerDied" from="ActionStateMachine/Die" to="." method="_on_die_player_died"]
 [connection signal="timeout" from="HurtFlashTimer" to="." method="_on_hurt_flash_timer_timeout"]
 [connection signal="area_entered" from="XPHurtBox" to="XPHurtBox" method="_on_area_entered"]
+[connection signal="gainXP" from="XPHurtBox" to="." method="_on_xp_hurt_box_gain_xp"]

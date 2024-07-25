@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ciuayf5okyali"]
+[gd_scene load_steps=15 format=3 uid="uid://ciuayf5okyali"]
 
 [ext_resource type="Texture2D" uid="uid://dj455kmgpuuy3" path="res://Assets/Images/Nick.png" id="1_0uegn"]
 [ext_resource type="PackedScene" uid="uid://ctymmmhqnr2wr" path="res://Scenes/health_bar.tscn" id="1_3p4mx"]
 [ext_resource type="PackedScene" uid="uid://cjukbma0njshh" path="res://Scenes/bulletTime_bar.tscn" id="2_mmi5f"]
 [ext_resource type="Texture2D" uid="uid://leo1egci8ueu" path="res://Assets/Images/circle progress bar under.png" id="4_hdwry"]
 [ext_resource type="Texture2D" uid="uid://d1fve6q2np14i" path="res://Assets/Images/circle progress bar.png" id="5_j40jq"]
+[ext_resource type="Script" path="res://Scripts/ExperienceBar.gd" id="6_kdl4l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv4x8"]
 bg_color = Color(0, 0, 0.454902, 1)
@@ -238,10 +239,11 @@ offset_top = 136.0
 offset_right = 1281.0
 offset_bottom = 1249.0
 scale = Vector2(0.25, 0.25)
-value = 50.0
+value = 100.0
 fill_mode = 4
 texture_under = ExtResource("4_hdwry")
 texture_progress = ExtResource("5_j40jq")
 tint_progress = Color(0, 1, 0.866667, 1)
 radial_initial_angle = 50.0
 radial_fill_degrees = 215.0
+script = ExtResource("6_kdl4l")

@@ -166,3 +166,4 @@ position = Vector2(128, 440)
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]
 [connection signal="updatePlayerBTBar" from="Player" to="UI" method="_on_player_update_player_bt_bar"]
 [connection signal="updatePlayerHealth" from="Player" to="UI" method="_on_player_update_player_health"]
+[connection signal="updateXPBar" from="Player" to="UI" method="_on_player_update_xp_bar"]

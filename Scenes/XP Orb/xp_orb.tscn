@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ysw2vkqjn88u"]
+[gd_scene load_steps=7 format=3 uid="uid://ysw2vkqjn88u"]
 
 [ext_resource type="Script" path="res://Scenes/XP Orb/XP Orb.gd" id="1_j51ic"]
 [ext_resource type="Texture2D" uid="uid://btfie3r0v2khm" path="res://Assets/Images/Tiles/tile_0006.png" id="2_jwgdr"]
 [ext_resource type="PackedScene" uid="uid://b5mx6nn0g8ij0" path="res://Scenes/tracking_handler.tscn" id="3_sd6h5"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Hitbox.gd" id="4_keaoh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_011ar"]
 radius = 128.0
@@ -30,6 +31,7 @@ shape = SubResource("CircleShape2D_011ar")
 [node name="Timer" type="Timer" parent="VisibleOnScreenNotifier2D"]
 
 [node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("4_keaoh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_0wvin")

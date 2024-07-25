@@ -29,3 +29,7 @@ func _on_player_init_player_bt_bar(value):
 
 func _on_player_update_player_bt_bar(value):
 	$"Player UI Bar/BulletTimeBar"._set_health(value)
+	
+
+func _on_player_update_xp_bar(value):
+	$"Player UI Bar/ExperienceBar"._set_XP(value)
