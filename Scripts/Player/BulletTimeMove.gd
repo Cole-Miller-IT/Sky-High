@@ -138,8 +138,8 @@ func executeOrders() -> bool:
 	return true
 			
 func combineOrders():
-	print("before combining")	
-	print(moveOrders)
+	#print("before combining")	
+	#print(moveOrders)
 	var prevOrder = null
 	var index = 0
 	for currentOrder in moveOrders:
@@ -163,6 +163,6 @@ func combineOrders():
 				index += 1
 				
 		
-	print("after combining")	
-	print(moveOrders)
+	#print("after combining")	
+	#print(moveOrders)
 

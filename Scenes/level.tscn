@@ -162,8 +162,18 @@ position = Vector2(392, 424)
 [node name="XP Orb2" parent="." instance=ExtResource("7_cqjpp")]
 position = Vector2(128, 440)
 
+[node name="XP Orb3" parent="." instance=ExtResource("7_cqjpp")]
+position = Vector2(224, 440)
+
+[node name="XP Orb4" parent="." instance=ExtResource("7_cqjpp")]
+position = Vector2(464, 424)
+
+[node name="XP Orb5" parent="." instance=ExtResource("7_cqjpp")]
+position = Vector2(616, 424)
+
 [connection signal="initPlayerBTBar" from="Player" to="UI" method="_on_player_init_player_bt_bar"]
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]
+[connection signal="levelUp" from="Player" to="." method="_on_player_level_up"]
 [connection signal="updatePlayerBTBar" from="Player" to="UI" method="_on_player_update_player_bt_bar"]
 [connection signal="updatePlayerHealth" from="Player" to="UI" method="_on_player_update_player_health"]
 [connection signal="updateXPBar" from="Player" to="UI" method="_on_player_update_xp_bar"]

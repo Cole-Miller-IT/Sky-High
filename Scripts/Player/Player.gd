@@ -9,6 +9,7 @@ signal updatePlayerHealth
 signal initPlayerBTBar
 signal updatePlayerBTBar
 signal updateXPBar
+signal levelUp
 
 @onready var trackingHandler = $TrackingHandler as TrackingHandler
 
@@ -91,5 +92,6 @@ func _on_xp_hurt_box_gain_xp():
 		xpLevelThreshold = xpLevelThreshold * xpLevelModifier
 		print("new xp to level " + str(xpLevelThreshold))
 		
-	#also add a level up value to send
+		emit_signal("levelUp", xpLevel)
+		
 	emit_signal("updateXPBar", xpCur)
