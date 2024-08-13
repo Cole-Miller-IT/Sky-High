@@ -249,15 +249,17 @@ radial_initial_angle = 50.0
 radial_fill_degrees = 215.0
 script = ExtResource("6_kdl4l")
 
-[node name="LevelUpFade" type="ColorRect" parent="."]
+[node name="LevelOverlay" type="CanvasLayer" parent="."]
 visible = false
+script = ExtResource("7_46r0i")
+
+[node name="LevelUpFade" type="ColorRect" parent="LevelOverlay"]
 z_index = 1
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.878431)
-script = ExtResource("7_46r0i")
 
-[node name="PowerUpsContainer" type="HBoxContainer" parent="LevelUpFade"]
+[node name="PowerUpsContainer" type="HBoxContainer" parent="LevelOverlay/LevelUpFade"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -272,24 +274,24 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="LevelUpFade/PowerUpsContainer"]
+[node name="Button" type="Button" parent="LevelOverlay/LevelUpFade/PowerUpsContainer"]
 process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Option 1"
 
-[node name="Button2" type="Button" parent="LevelUpFade/PowerUpsContainer"]
+[node name="Button2" type="Button" parent="LevelOverlay/LevelUpFade/PowerUpsContainer"]
 process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Option 2"
 
-[node name="Button3" type="Button" parent="LevelUpFade/PowerUpsContainer"]
+[node name="Button3" type="Button" parent="LevelOverlay/LevelUpFade/PowerUpsContainer"]
 process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Option 3"
 
-[connection signal="pressed" from="LevelUpFade/PowerUpsContainer/Button" to="LevelUpFade" method="_on_button_pressed"]
-[connection signal="pressed" from="LevelUpFade/PowerUpsContainer/Button2" to="LevelUpFade" method="_on_button_2_pressed"]
-[connection signal="pressed" from="LevelUpFade/PowerUpsContainer/Button3" to="LevelUpFade" method="_on_button_3_pressed"]
+[connection signal="pressed" from="LevelOverlay/LevelUpFade/PowerUpsContainer/Button" to="LevelOverlay" method="_on_button_pressed"]
+[connection signal="pressed" from="LevelOverlay/LevelUpFade/PowerUpsContainer/Button2" to="LevelOverlay" method="_on_button_2_pressed"]
+[connection signal="pressed" from="LevelOverlay/LevelUpFade/PowerUpsContainer/Button3" to="LevelOverlay" method="_on_button_3_pressed"]

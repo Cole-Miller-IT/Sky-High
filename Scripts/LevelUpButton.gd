@@ -1,4 +1,4 @@
-extends ColorRect
+extends CanvasLayer
 
 
 func _on_button_pressed():
@@ -13,9 +13,12 @@ func _on_button_3_pressed():
 	applyPowerUp(3)
 
 func applyPowerUp(value):
-	print("Choosen power up was " + value)
+	print("Choosen power up was " + str(value))
 	
 	#Update the player's info
+	
+	
+	
 	
 	#disable the overlay
 	self.visible = false
