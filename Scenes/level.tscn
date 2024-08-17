@@ -151,7 +151,7 @@ script = ExtResource("5_7b56q")
 [node name="Player UI Bar" parent="UI" instance=ExtResource("5_msuw3")]
 scale = Vector2(0.6, 0.6)
 
-[node name="Player" parent="." instance=ExtResource("2_ayi73")]
+[node name="Player" parent="." groups=["players"] instance=ExtResource("2_ayi73")]
 
 [node name="TestCollideCharacter" parent="." instance=ExtResource("3_61qxc")]
 position = Vector2(560, -72)

@@ -10,12 +10,9 @@ func player_died():
 
 
 func _on_player_level_up(value):
-	print("Level caught player level up signal")
-	print(value)
+	#print("Level caught player level up signal")
+	#print(value)
 	$"UI/Player UI Bar/LevelCounter".text = str(value)
-	
-	#Randomly choose three upgrades, from a pool of available upgrades
-	
 	
 	#show the overlay and available choices 
 	$"UI/Player UI Bar/LevelOverlay".visible = true

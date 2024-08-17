@@ -7,7 +7,7 @@ func _ready():
 	
 
 func _set_XP(xpCur):
-	print("updating xp bar")
+	#print("updating xp bar")
 	#update the visual progress bar
 	value = xpCur
 	

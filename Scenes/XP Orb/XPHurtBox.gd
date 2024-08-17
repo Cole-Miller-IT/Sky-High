@@ -6,7 +6,7 @@ signal gainXP
 
 
 func _on_area_entered(hitbox: HitBox):
-	print("hitbox")
-	print(hitbox)
+	#print("hitbox")
+	#print(hitbox)
 	
 	emit_signal("gainXP")

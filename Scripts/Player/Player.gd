@@ -23,7 +23,8 @@ var canAttack = true
 
 #player info
 var health = 10
-var bulletTimeCharges = 10
+var bulletTimeCharges = 2
+var goldGain = 1.00
 
 var xpLevel = 1
 var xpCur = 0
@@ -31,9 +32,9 @@ var xpLevelThreshold = 100 	#How much xp the player needs to level up
 var xpLevelModifier = 1.1 	#How much more xp the players needs per level as a multiplier
 var xpAmount = 100			#How much exp the player gains per orb
 
-var availableUpgrades = []
-
 func _ready() -> void:
+	add_to_group("players") #Used for upgrades
+	
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
 	movementStateMachine.init(self)
