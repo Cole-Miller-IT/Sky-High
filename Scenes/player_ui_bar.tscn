@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ciuayf5okyali"]
+[gd_scene load_steps=18 format=3 uid="uid://ciuayf5okyali"]
 
 [ext_resource type="Texture2D" uid="uid://dj455kmgpuuy3" path="res://Assets/Images/Nick.png" id="1_0uegn"]
 [ext_resource type="PackedScene" uid="uid://ctymmmhqnr2wr" path="res://Scenes/health_bar.tscn" id="1_3p4mx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fve6q2np14i" path="res://Assets/Images/circle progress bar.png" id="5_j40jq"]
 [ext_resource type="Script" path="res://Scripts/ExperienceBar.gd" id="6_kdl4l"]
 [ext_resource type="Script" path="res://Scripts/LevelUpButton.gd" id="7_46r0i"]
+[ext_resource type="Script" path="res://Resources/Upgrades/healthUpgrade.gd" id="8_2vuxg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv4x8"]
 bg_color = Color(0, 0, 0.454902, 1)
@@ -78,6 +79,9 @@ corner_radius_top_left = 7
 corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
+
+[sub_resource type="Resource" id="Resource_bgjis"]
+script = ExtResource("8_2vuxg")
 
 [node name="Player UI Bar" type="Control"]
 layout_mode = 3
@@ -252,6 +256,7 @@ script = ExtResource("6_kdl4l")
 [node name="LevelOverlay" type="CanvasLayer" parent="."]
 visible = false
 script = ExtResource("7_46r0i")
+hpUpgrade = SubResource("Resource_bgjis")
 
 [node name="LevelUpFade" type="ColorRect" parent="LevelOverlay"]
 z_index = 1
