@@ -1,4 +1,4 @@
-class_name healthUpgradeResScript
+class_name healthUpgrade
 extends "res://Resources/Upgrades/baseUpgrade.gd"
 
 

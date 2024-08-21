@@ -1,5 +1,5 @@
 class_name goldGainUpgrade
-extends "res://Scripts/Upgrades/baseUpgrade.gd"
+extends "res://Resources/Upgrades/baseUpgrade.gd"
 
 
 func applyUpgrade(player: Player):

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="goldGainUpgrade" load_steps=2 format=3 uid="uid://q2ng0aa8majg"]
+
+[ext_resource type="Script" path="res://Resources/Upgrades/goldUpgrade.gd" id="1_ltvf7"]
+
+[resource]
+script = ExtResource("1_ltvf7")

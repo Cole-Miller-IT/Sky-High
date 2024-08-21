@@ -1,7 +1,9 @@
 extends CanvasLayer
 
 
-@export var hpUpgrade: healthUpgradeResScript #load("res://Scripts/Upgrades/healthUpgrade.gd")
+@export var hpUpgrade: healthUpgrade #load("res://Scripts/Upgrades/healthUpgrade.gd")
+@export var bulletTimeUpgrade: btUpgrade
+@export var goldGainUp: goldGainUpgrade
 #@onready var btUpgradePath = load("res://Scripts/Upgrades/btChargeUpgrade.gd")
 #@onready var goldGainUpgradePath = load("res://Scripts/Upgrades/healthUpgrade.gd")
 
@@ -32,13 +34,13 @@ func applyPowerUp(value):
 			#print(player.health)
 			
 		elif value == 2:
-			#btUpgrade.applyUpgrade(player)
-			player.bulletTimeCharges = 5
-			print("player bt charges is ")
-			print(player.bulletTimeCharges)
+			bulletTimeUpgrade.applyUpgrade(player)
+			#player.bulletTimeCharges = 5
+			#print("player bt charges is ")
+			#print(player.bulletTimeCharges)
 			
 		else:
-			pass #goldGainUpgrade.applyUpgrade(player)
+			goldGainUp.applyUpgrade(player)
 	
 	
 	#disable the overlay
