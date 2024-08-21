@@ -1,12 +1,9 @@
 extends CanvasLayer
 
-
-@export var hpUpgrade: healthUpgrade #load("res://Scripts/Upgrades/healthUpgrade.gd")
+#@export variables are assigned in the editor
+@export var hpUpgrade: healthUpgrade
 @export var bulletTimeUpgrade: btUpgrade
 @export var goldGainUp: goldGainUpgrade
-#@onready var btUpgradePath = load("res://Scripts/Upgrades/btChargeUpgrade.gd")
-#@onready var goldGainUpgradePath = load("res://Scripts/Upgrades/healthUpgrade.gd")
-
 @onready var players = get_tree().get_nodes_in_group("players")
 
 func _on_button_pressed():
@@ -28,20 +25,13 @@ func applyPowerUp(value):
 		#print(player)
 		#Update the player's info. For now just have 3 static player upgrades that change the player's data
 		if value == 1:
-			hpUpgrade.applyUpgrade(player) #this isn't working
-			print("upgrade 1")
-			#print("player health is ")
-			#print(player.health)
+			hpUpgrade.applyUpgrade(player)
 			
 		elif value == 2:
 			bulletTimeUpgrade.applyUpgrade(player)
-			#player.bulletTimeCharges = 5
-			#print("player bt charges is ")
-			#print(player.bulletTimeCharges)
 			
 		else:
 			goldGainUp.applyUpgrade(player)
-	
 	
 	#disable the overlay
 	self.visible = false

@@ -6,14 +6,17 @@ extends Node2D
 @onready var deathTimer = $Death as Timer
 @onready var hitDetector = $HitDetector as Area2D
 
-
 var direction: Vector2 = Vector2.ZERO
 var speed : float = 150.0
+
 
 func _ready():
 	set_as_top_level(true) #Make the bullet move independant of it's parent (i.e. the player)
 	
 	look_at(position + direction)
+	
+	#Assign the bullet's damage to the hitbox, the hitbox is what does damage to the hurtbox of player's and enemies
+	$Hitbox.damage = 25
 	
 	hitDetector.connect("body_entered", Callable(self, "_on_hit"))
 	
