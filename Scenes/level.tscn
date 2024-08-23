@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3m0wrdnu01vn"]
+[gd_scene load_steps=12 format=3 uid="uid://b3m0wrdnu01vn"]
 
 [ext_resource type="Texture2D" uid="uid://vy24xyu8rbli" path="res://Assets/Images/Tilemap/tiles_packed.png" id="1_avl4d"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_dnsy5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="5_7b56q"]
 [ext_resource type="PackedScene" uid="uid://ciuayf5okyali" path="res://Scenes/player_ui_bar.tscn" id="5_msuw3"]
 [ext_resource type="PackedScene" uid="uid://ysw2vkqjn88u" path="res://Scenes/XP Orb/xp_orb.tscn" id="7_cqjpp"]
+[ext_resource type="PackedScene" uid="uid://dr8s7n6x7rb51" path="res://Scenes/Spawner/spawner.tscn" id="8_vm4ga"]
 
 [sub_resource type="Environment" id="Environment_6g5wf"]
 
@@ -165,11 +166,7 @@ position = Vector2(128, 440)
 [node name="XP Orb3" parent="." instance=ExtResource("7_cqjpp")]
 position = Vector2(224, 440)
 
-[node name="XP Orb4" parent="." instance=ExtResource("7_cqjpp")]
-position = Vector2(464, 424)
-
-[node name="XP Orb5" parent="." instance=ExtResource("7_cqjpp")]
-position = Vector2(616, 424)
+[node name="Spawner" parent="." instance=ExtResource("8_vm4ga")]
 
 [connection signal="initPlayerBTBar" from="Player" to="UI" method="_on_player_init_player_bt_bar"]
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]

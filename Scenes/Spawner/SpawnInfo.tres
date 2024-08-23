@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Spawn_info" load_steps=2 format=3 uid="uid://bwhb6ljc5nb0w"]
+
+[ext_resource type="Script" path="res://Scenes/Spawner/spawnInfo.gd" id="1_0sbq2"]
+
+[resource]
+script = ExtResource("1_0sbq2")
+timeStart = 0
+timeEnd = 0
+enemySpawnAmount = 0
+enemySpawnDelay = 0
