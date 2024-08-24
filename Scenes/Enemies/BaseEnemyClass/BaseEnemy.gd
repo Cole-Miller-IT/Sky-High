@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name BaseEnemy
 
 @onready var player = get_tree().get_first_node_in_group("players")
+@export var xpOrb = load("res://Scenes/XP Orb/xp_orb.tscn")
 
 var health = 20
 var movementSpeed = 60
@@ -29,5 +30,12 @@ func attack(value):
 	print("enemy attack now")
 	
 func die():
-	print("enemy die now")
+	#print("enemy die now")
+	
+	#spawn xp orb pickup
+	var instance = xpOrb.instantiate()
+	instance.global_position = self.global_position
+	#add it to the level node
+	get_parent().add_child(instance)
+	
 	queue_free()
