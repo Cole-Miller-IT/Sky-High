@@ -17,12 +17,15 @@ signal levelUp
 @onready var movementStateMachine = $MovementStateMachine
 @onready var actionStateMachine = $ActionStateMachine
 
+@export var dieStateMove: State
+@export var dieStateAction: State
+
 #Shared data for the state machines
 var canAttack = true
-
+var dying = false
 
 #player info
-var health = 10
+var health = 100
 var bulletTimeCharges = 2
 var goldGain = 1.00
 
@@ -96,5 +99,17 @@ func _on_xp_hurt_box_gain_xp():
 		#print("new xp to level " + str(xpLevelThreshold))
 		
 		emit_signal("levelUp", xpLevel)
+	
+
+func take_damage(value):
+	#print(value)
+	health -= value
+	hurtFlash()
+	
+	#print(health)
+	if health <= 0 and dying == false:
+		print("player died")
+		dying = true
 		
-	emit_signal("updateXPBar", xpCur)
+		movementStateMachine.change_state(dieStateMove)
+		actionStateMachine.change_state(dieStateAction)

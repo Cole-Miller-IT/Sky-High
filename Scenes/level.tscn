@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3m0wrdnu01vn"]
+[gd_scene load_steps=13 format=3 uid="uid://b3m0wrdnu01vn"]
 
 [ext_resource type="Texture2D" uid="uid://vy24xyu8rbli" path="res://Assets/Images/Tilemap/tiles_packed.png" id="1_avl4d"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_dnsy5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ciuayf5okyali" path="res://Scenes/player_ui_bar.tscn" id="5_msuw3"]
 [ext_resource type="PackedScene" uid="uid://ysw2vkqjn88u" path="res://Scenes/XP Orb/xp_orb.tscn" id="7_cqjpp"]
 [ext_resource type="PackedScene" uid="uid://dr8s7n6x7rb51" path="res://Scenes/Spawner/spawner.tscn" id="8_vm4ga"]
+[ext_resource type="Resource" uid="uid://bwhb6ljc5nb0w" path="res://Scenes/Spawner/SpawnInfo.tres" id="10_5r3o3"]
 
 [sub_resource type="Environment" id="Environment_6g5wf"]
 
@@ -167,6 +168,7 @@ position = Vector2(128, 440)
 position = Vector2(224, 440)
 
 [node name="Spawner" parent="." instance=ExtResource("8_vm4ga")]
+spawns = Array[Resource]([ExtResource("10_5r3o3")])
 
 [connection signal="initPlayerBTBar" from="Player" to="UI" method="_on_player_init_player_bt_bar"]
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]
