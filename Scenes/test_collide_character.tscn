@@ -34,7 +34,7 @@ position = Vector2(0, 108)
 shape = SubResource("RectangleShape2D_leoq2")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_1yq04")]
-offset_left = -296.0
-offset_top = -80.0
-offset_right = 320.0
-offset_bottom = -48.0
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 56.0
+offset_bottom = -24.0
