@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://duef6yvbw7b2e"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/EnemyMelee.gd" id="1_k5noq"]
+[ext_resource type="PackedScene" uid="uid://cm2pr03dkdlp7" path="res://Scenes/Enemies/BaseEnemyClass/enemy_base.tscn" id="1_kufhi"]
+[ext_resource type="Texture2D" uid="uid://dn86sc66ptj5g" path="res://Assets/Images/Ships/ship_0012.png" id="2_gv4jn"]
+
+[node name="EnemyMelee" instance=ExtResource("1_kufhi")]
+script = ExtResource("1_k5noq")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(9.53674e-07, -9.53674e-07)
+rotation = 1.5708
+scale = Vector2(1.03107, 1.03183)
+texture = ExtResource("2_gv4jn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3m0wrdnu01vn"]
+[gd_scene load_steps=12 format=3 uid="uid://b3m0wrdnu01vn"]
 
 [ext_resource type="Texture2D" uid="uid://vy24xyu8rbli" path="res://Assets/Images/Tilemap/tiles_packed.png" id="1_avl4d"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_dnsy5"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cms54s1lri4uh" path="res://Scenes/test_collide_character.tscn" id="3_61qxc"]
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="5_7b56q"]
 [ext_resource type="PackedScene" uid="uid://ciuayf5okyali" path="res://Scenes/player_ui_bar.tscn" id="5_msuw3"]
-[ext_resource type="PackedScene" uid="uid://ysw2vkqjn88u" path="res://Scenes/XP Orb/xp_orb.tscn" id="7_cqjpp"]
 [ext_resource type="PackedScene" uid="uid://dr8s7n6x7rb51" path="res://Scenes/Spawner/spawner.tscn" id="8_vm4ga"]
 [ext_resource type="Resource" uid="uid://bwhb6ljc5nb0w" path="res://Scenes/Spawner/SpawnInfo.tres" id="10_5r3o3"]
 
@@ -157,15 +156,6 @@ scale = Vector2(0.6, 0.6)
 
 [node name="TestCollideCharacter" parent="." instance=ExtResource("3_61qxc")]
 position = Vector2(560, -72)
-
-[node name="XP Orb" parent="." instance=ExtResource("7_cqjpp")]
-position = Vector2(392, 424)
-
-[node name="XP Orb2" parent="." instance=ExtResource("7_cqjpp")]
-position = Vector2(128, 440)
-
-[node name="XP Orb3" parent="." instance=ExtResource("7_cqjpp")]
-position = Vector2(224, 440)
 
 [node name="Spawner" parent="." instance=ExtResource("8_vm4ga")]
 spawns = Array[Resource]([ExtResource("10_5r3o3")])

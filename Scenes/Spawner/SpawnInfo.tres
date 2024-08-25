@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Spawn_info" load_steps=3 format=3 uid="uid://bwhb6ljc5nb0w"]
 
 [ext_resource type="Script" path="res://Scenes/Spawner/spawnInfo.gd" id="1_0sbq2"]
-[ext_resource type="PackedScene" uid="uid://cm2pr03dkdlp7" path="res://Scenes/Enemies/BaseEnemyClass/enemy_base.tscn" id="1_atqhy"]
+[ext_resource type="PackedScene" uid="uid://duef6yvbw7b2e" path="res://Scenes/Enemies/enemy_melee.tscn" id="1_v2874"]
 
 [resource]
 script = ExtResource("1_0sbq2")
 timeStart = 0
 timeEnd = 60
-enemy = ExtResource("1_atqhy")
+enemy = ExtResource("1_v2874")
 enemySpawnAmount = 1

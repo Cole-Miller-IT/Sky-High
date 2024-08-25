@@ -33,7 +33,7 @@ var xpLevel = 1
 var xpCur = 0
 var xpLevelThreshold = 100 	#How much xp the player needs to level up
 var xpLevelModifier = 1.1 	#How much more xp the players needs per level as a multiplier
-var xpAmount = 100			#How much exp the player gains per orb
+var xpAmount = 25			#How much exp the player gains per orb
 
 func _ready() -> void:
 	add_to_group("players") #Used for upgrades
@@ -99,6 +99,8 @@ func _on_xp_hurt_box_gain_xp():
 		#print("new xp to level " + str(xpLevelThreshold))
 		
 		emit_signal("levelUp", xpLevel)
+		
+	emit_signal("updateXPBar", xpCur)
 	
 
 func take_damage(value):
