@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3m0wrdnu01vn"]
+[gd_scene load_steps=16 format=3 uid="uid://b3m0wrdnu01vn"]
 
 [ext_resource type="Texture2D" uid="uid://vy24xyu8rbli" path="res://Assets/Images/Tilemap/tiles_packed.png" id="1_avl4d"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_dnsy5"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="5_7b56q"]
 [ext_resource type="PackedScene" uid="uid://ciuayf5okyali" path="res://Scenes/player_ui_bar.tscn" id="5_msuw3"]
 [ext_resource type="PackedScene" uid="uid://dr8s7n6x7rb51" path="res://Scenes/Spawner/spawner.tscn" id="8_vm4ga"]
-[ext_resource type="Resource" uid="uid://bwhb6ljc5nb0w" path="res://Scenes/Spawner/SpawnInfo.tres" id="10_5r3o3"]
+[ext_resource type="PackedScene" uid="uid://duef6yvbw7b2e" path="res://Scenes/Enemies/enemy_melee.tscn" id="8_x7eha"]
+[ext_resource type="Script" path="res://Scenes/Spawner/spawnInfo.gd" id="9_oda3j"]
+[ext_resource type="PackedScene" uid="uid://dbsjn7pbdx6pd" path="res://Scenes/Enemies/enemy_explode.tscn" id="10_1qf2v"]
 
 [sub_resource type="Environment" id="Environment_6g5wf"]
 
@@ -137,6 +139,20 @@ texture = ExtResource("1_avl4d")
 [sub_resource type="TileSet" id="TileSet_4ecav"]
 sources/0 = SubResource("TileSetAtlasSource_r1qah")
 
+[sub_resource type="Resource" id="Resource_itqsq"]
+script = ExtResource("9_oda3j")
+timeStart = 0
+timeEnd = 60
+enemy = ExtResource("8_x7eha")
+enemySpawnAmount = 1
+
+[sub_resource type="Resource" id="Resource_che3h"]
+script = ExtResource("9_oda3j")
+timeStart = 0
+timeEnd = 60
+enemy = ExtResource("10_1qf2v")
+enemySpawnAmount = 2
+
 [node name="Level" type="WorldEnvironment"]
 environment = SubResource("Environment_6g5wf")
 script = ExtResource("1_dnsy5")
@@ -158,7 +174,10 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(560, -72)
 
 [node name="Spawner" parent="." instance=ExtResource("8_vm4ga")]
-spawns = Array[Resource]([ExtResource("10_5r3o3")])
+spawns = Array[Resource]([SubResource("Resource_itqsq"), SubResource("Resource_che3h")])
+
+[node name="EnemyExplode" parent="." instance=ExtResource("10_1qf2v")]
+position = Vector2(184, 360)
 
 [connection signal="initPlayerBTBar" from="Player" to="UI" method="_on_player_init_player_bt_bar"]
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]

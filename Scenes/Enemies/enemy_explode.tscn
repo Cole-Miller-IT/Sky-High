@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbsjn7pbdx6pd"]
+
+[ext_resource type="PackedScene" uid="uid://cm2pr03dkdlp7" path="res://Scenes/Enemies/BaseEnemyClass/enemy_base.tscn" id="1_j5sv8"]
+[ext_resource type="Script" path="res://Scenes/Enemies/EnemyExplode.gd" id="2_lys0e"]
+[ext_resource type="Texture2D" uid="uid://bm7f4cfoybwpj" path="res://Assets/Images/Ships/ship_0017.png" id="3_3mv4g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65ax7"]
+radius = 32.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nc36a"]
+bg_color = Color(1, 0, 0, 0.321569)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[node name="EnemyExplode" instance=ExtResource("1_j5sv8")]
+script = ExtResource("2_lys0e")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(9.53674e-07, -9.53674e-07)
+rotation = 1.5708
+scale = Vector2(1.03107, 1.03183)
+texture = ExtResource("3_3mv4g")
+
+[node name="DetectionRange" type="Area2D" parent="." index="3"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange" index="0"]
+shape = SubResource("CircleShape2D_65ax7")
+
+[node name="Timer" type="Timer" parent="." index="4"]
+wait_time = 2.0
+one_shot = true
+
+[node name="ExplosionRadius" type="Panel" parent="." index="5"]
+visible = false
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nc36a")
+
+[connection signal="area_entered" from="DetectionRange" to="." method="_on_detection_range_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
