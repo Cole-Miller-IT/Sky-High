@@ -2,10 +2,13 @@ extends WorldEnvironment
 
 func _ready():
 	$Player.playerDied.connect(player_died)
+	$PauseOverlay.visible = false
 	
 
 func player_died():
 	print("player died")
+	$PauseOverlay.visible = true
+	$PauseOverlay/VBoxContainer/Resume.visible = false
 	get_tree().paused = true
 
 

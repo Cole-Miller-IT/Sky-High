@@ -30,7 +30,8 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange" index="0"]
 shape = SubResource("CircleShape2D_65ax7")
 
-[node name="DetectRadius" type="Panel" parent="DetectionRange" index="1"]
+[node name="DetectRadiusDebug" type="Panel" parent="DetectionRange" index="1"]
+visible = false
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
