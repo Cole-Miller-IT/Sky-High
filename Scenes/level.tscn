@@ -142,14 +142,14 @@ sources/0 = SubResource("TileSetAtlasSource_r1qah")
 [sub_resource type="Resource" id="Resource_itqsq"]
 script = ExtResource("9_oda3j")
 timeStart = 0
-timeEnd = 15
-enemy = ExtResource("8_x7eha")
+timeEnd = 30
+enemy = ExtResource("10_1qf2v")
 enemySpawnAmount = 1
 
 [sub_resource type="Resource" id="Resource_1spkk"]
 script = ExtResource("9_oda3j")
-timeStart = 20
-timeEnd = 35
+timeStart = 30
+timeEnd = 60
 enemy = ExtResource("8_x7eha")
 enemySpawnAmount = 2
 
@@ -178,6 +178,9 @@ spawns = Array[Resource]([SubResource("Resource_itqsq"), SubResource("Resource_1
 
 [node name="EnemyExplode" parent="." instance=ExtResource("10_1qf2v")]
 position = Vector2(184, 360)
+
+[node name="EnemyExplode2" parent="." instance=ExtResource("10_1qf2v")]
+position = Vector2(312, 360)
 
 [connection signal="initPlayerBTBar" from="Player" to="UI" method="_on_player_init_player_bt_bar"]
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]

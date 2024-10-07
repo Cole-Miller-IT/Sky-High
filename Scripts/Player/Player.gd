@@ -46,6 +46,9 @@ func _ready() -> void:
 	#Init the UI bars
 	initPlayerHealth.emit(health)
 	initPlayerBTBar.emit(bulletTimeCharges)
+	
+	#debugging
+	#print("player's area: " + $Hitbox)
 
 #pass the input/processing to the state machines
 func _unhandled_input(event: InputEvent) -> void:
