@@ -12,8 +12,8 @@ func _process(delta):
 
 
 func _on_player_update_player_health(value):
-	#print("player health update")
-	#print(value)
+	print("player health update")
+	print(value)
 	$"Player UI Bar/HealthBar"._set_health(value)
 
 

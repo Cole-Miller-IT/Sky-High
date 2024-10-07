@@ -66,17 +66,12 @@ func _process(delta: float) -> void:
 #pass up the signal from the die state
 func _on_die_player_died():
 	playerDied.emit()
-
-
-func _on_update_player_health(value):
-	#Apply the flash shader to the player for a brief time
-	hurtFlash()
 	
 	
 func hurtFlash():
 	$Sprite2D.material.set_shader_parameter("flash_modifier", 0.7)
 	$Sprite2D.material.set_shader_parameter("flash_color", Vector4(1, 0, 0, 1))
-	$HurtFlashTimer.start()
+	$HurtFlashTimer.start(2)
 
 
 func _on_hurt_flash_timer_timeout():
@@ -105,8 +100,12 @@ func _on_xp_hurt_box_gain_xp():
 
 func take_damage(value):
 	#print(value)
-	health -= value
 	hurtFlash()
+	
+	#update UI
+	emit_signal("updatePlayerHealth", (health - value))
+	
+	health -= value
 	
 	#print(health)
 	if health <= 0 and dying == false:

@@ -13,7 +13,8 @@ func _set_health(newHealth):
 	value = health
 	
 	if health <= 0:
-		queue_free()
+		#queue_free()
+		pass
 		
 	if health < prevHealth:
 		$Timer.start()

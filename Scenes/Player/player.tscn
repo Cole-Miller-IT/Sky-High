@@ -170,7 +170,6 @@ script = ExtResource("19_qstwj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_01nyr")
 
-[connection signal="updatePlayerHealth" from="." to="." method="_on_update_player_health"]
 [connection signal="timeout" from="ActionStateMachine/Attack/AttackRate" to="ActionStateMachine/Attack" method="_on_attack_rate_timeout"]
 [connection signal="playerDied" from="ActionStateMachine/Die" to="." method="_on_die_player_died"]
 [connection signal="timeout" from="HurtFlashTimer" to="." method="_on_hurt_flash_timer_timeout"]
