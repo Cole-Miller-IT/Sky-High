@@ -24,7 +24,9 @@ func process_input(event: InputEvent) -> State:
 		
 	if Input.is_action_just_pressed('ui_cancel'):
 		print("pause")
+		
 		#show overlay
+		parent.emit_signal("pauseMenuKeyPressed")
 	
 	return null
 

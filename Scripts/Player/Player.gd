@@ -10,6 +10,7 @@ signal initPlayerBTBar
 signal updatePlayerBTBar
 signal updateXPBar
 signal levelUp
+signal pauseMenuKeyPressed
 
 @onready var trackingHandler = $TrackingHandler as TrackingHandler
 

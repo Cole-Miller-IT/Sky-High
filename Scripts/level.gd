@@ -23,4 +23,7 @@ func _on_player_level_up(value):
 	#pause the game
 	get_tree().paused = true
 	
-	
+
+func _on_player_pause_menu_key_pressed():
+	$PauseOverlay.visible = true
+	get_tree().paused = true
