@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3m0wrdnu01vn"]
+[gd_scene load_steps=18 format=3 uid="uid://b3m0wrdnu01vn"]
 
 [ext_resource type="Texture2D" uid="uid://vy24xyu8rbli" path="res://Assets/Images/Tilemap/tiles_packed.png" id="1_avl4d"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_dnsy5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://duef6yvbw7b2e" path="res://Scenes/Enemies/enemy_melee.tscn" id="8_x7eha"]
 [ext_resource type="Script" path="res://Scenes/Spawner/spawnInfo.gd" id="9_oda3j"]
 [ext_resource type="PackedScene" uid="uid://dbsjn7pbdx6pd" path="res://Scenes/Enemies/enemy_explode.tscn" id="10_1qf2v"]
+[ext_resource type="PackedScene" uid="uid://bhcdfp6utruw1" path="res://Scenes/Enemies/burstEnemy/enemy_burst.tscn" id="12_wfl8m"]
 
 [sub_resource type="Environment" id="Environment_6g5wf"]
 
@@ -178,6 +179,9 @@ spawns = Array[Resource]([SubResource("Resource_itqsq"), SubResource("Resource_1
 
 [node name="TestCollideCharacter" parent="." instance=ExtResource("3_61qxc")]
 position = Vector2(560, -72)
+
+[node name="EnemyBurst" parent="." instance=ExtResource("12_wfl8m")]
+position = Vector2(528, 280)
 
 [connection signal="initPlayerBTBar" from="Player" to="UI" method="_on_player_init_player_bt_bar"]
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]
