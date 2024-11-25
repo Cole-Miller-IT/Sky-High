@@ -4,9 +4,9 @@ class_name BurstEnemy
 var shotDamage = 5
 var shotDamageMultiplier = 1
 var burst = 3
+@export var bullet : PackedScene
 
-
-func _physics_process(delta):
+func _physics_process(delta): 
 	var direction = global_position.direction_to(player.global_position)
 	#velocity = direction * movementSpeed
 	
@@ -23,12 +23,13 @@ func attack(value):
 	for i in range(burst):
 		print("new bullet")
 		#instance a bullet
-		#var newBullet = bullet.instance()
+		var newBullet = bullet.instantiate()
+		owner.add_child(newBullet)
 		
-		#assign properties or use a resource
 		
-		#point it towards the player
-		#newBullet.look_at(player.get_global_position())
+		newBullet.transform = $Muzzle.global_transform
+		
+		#add_child(newBullet)
 		
 		#Assign it a way to die
 
