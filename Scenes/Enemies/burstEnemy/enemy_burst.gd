@@ -17,14 +17,14 @@ func _physics_process(delta):
 	#move_and_slide()
 
 func attack(value):
-	print("------------enemy attack now-----------")
+	#print("------------enemy attack now-----------")
 	#var damagePerShot = value * shotDamageMultiplier
 	
 	for i in range(burst):
 		var newBullet = bullet.instantiate()
 		owner.add_child(newBullet)
 		
-		#
+		#Make the bullet start at the muzzle marker
 		newBullet.transform = $Muzzle.global_transform
 		
 		#wait 0.1 seconds before next shot

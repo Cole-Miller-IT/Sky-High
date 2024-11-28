@@ -6,7 +6,7 @@ var speed : float = 150.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$HitBox.damage = 5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

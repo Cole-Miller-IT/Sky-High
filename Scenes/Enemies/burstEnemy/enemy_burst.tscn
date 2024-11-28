@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhcdfp6utruw1"]
+[gd_scene load_steps=4 format=3 uid="uid://bhcdfp6utruw1"]
 
 [ext_resource type="PackedScene" uid="uid://cm2pr03dkdlp7" path="res://Scenes/Enemies/BaseEnemyClass/enemy_base.tscn" id="1_o7grj"]
 [ext_resource type="Script" path="res://Scenes/Enemies/burstEnemy/enemy_burst.gd" id="2_tc7v7"]
 [ext_resource type="Texture2D" uid="uid://dwxuank6stmd8" path="res://Assets/Images/Ships/ship_0019.png" id="3_h0woh"]
-[ext_resource type="Script" path="res://Scenes/Enemies/burstEnemy/bullet_burst.gd" id="4_nfy4k"]
 
 [node name="EnemyBurst" instance=ExtResource("1_o7grj")]
 script = ExtResource("2_tc7v7")
@@ -20,8 +19,5 @@ autostart = true
 
 [node name="Muzzle" type="Marker2D" parent="." index="4"]
 position = Vector2(16, 0)
-
-[node name="BulletBurst" type="Node2D" parent="." index="5"]
-script = ExtResource("4_nfy4k")
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
