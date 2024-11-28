@@ -16,6 +16,7 @@ func _physics_process(delta):
 	#Do not move towards the player
 	#move_and_slide()
 
+
 func attack(value):
 	#print("------------enemy attack now-----------")
 	#var damagePerShot = value * shotDamageMultiplier
@@ -29,6 +30,7 @@ func attack(value):
 		
 		#wait 0.1 seconds before next shot
 		await get_tree().create_timer(0.1).timeout
+	
 	
 func _on_attack_cooldown_timeout():
 	#shoot a 3 round burst at the player
