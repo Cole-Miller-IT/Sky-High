@@ -150,7 +150,7 @@ enemySpawnAmount = 1
 
 [sub_resource type="Resource" id="Resource_1spkk"]
 script = ExtResource("9_oda3j")
-timeStart = 30
+timeStart = 15
 timeEnd = 60
 enemy = ExtResource("8_x7eha")
 enemySpawnAmount = 2
@@ -181,7 +181,7 @@ spawns = Array[Resource]([SubResource("Resource_itqsq"), SubResource("Resource_1
 position = Vector2(560, -72)
 
 [node name="EnemyBurst" parent="." instance=ExtResource("12_wfl8m")]
-position = Vector2(528, 280)
+position = Vector2(480, 224)
 
 [connection signal="initPlayerBTBar" from="Player" to="UI" method="_on_player_init_player_bt_bar"]
 [connection signal="initPlayerHealth" from="Player" to="UI" method="_on_player_init_player_health"]
